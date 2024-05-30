@@ -5,10 +5,11 @@ Process::Process(int id, int priority, int n)
     this->id = id;
     this->priority = priority;
     this->progress = 0;
-    this->window = new sf::RenderWindow(sf::VideoMode(300, 300), "Process " + std::to_string(this->id));
-    this->window->setPosition(sf::Vector2i((id*350)%(350*3), 350*int(id/3)));
     std::pair<int, int> o(150, 150);
     this->flyeye = new FlyEye(100, n, 0, sf::Color::White, o);
+    
+    this->window = new sf::RenderWindow(sf::VideoMode(300, 300), "Process " + std::to_string(this->id) + " [" + std::to_string(this->flyeye->getV()) +"]");
+    this->window->setPosition(sf::Vector2i((id*350)%(350*3), 350*int(id/3)));
 
     // Compute coords
     this->compute_vertex_coords();
@@ -54,7 +55,7 @@ void Process::run()
     this->progress ++;
     if (this->isOver())
     {
-        this->window->setTitle("COMPLETED");
+        this->window->setTitle("COMPLETED [" + std::to_string(this->flyeye->getV()) + "]");
         this->window->display();
     }
 }

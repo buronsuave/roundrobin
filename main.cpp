@@ -1,7 +1,7 @@
 #include "Process.h"
 #define N_PROCESSES 6
 #define MIN_NODES 10
-#define MAX_NDOES 30
+#define MAX_NDOES 40
 
 class Main
 {
